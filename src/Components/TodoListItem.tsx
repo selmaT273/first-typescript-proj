@@ -9,10 +9,15 @@ interface Props {
   todo: Todo;
 }
 
-export const TodoListItem: React.FC<Props> = props => {
+export const TodoListItem: React.FC<Props> = ({ todo }) => {
   return (
     <>
-    Content
+    <li>
+      <label style={{ textDecoration: todo.complete ? 'line-through' : undefined }}>
+        <input type="checkbox" checked={ todo.complete } /> 
+        { todo.text }
+      </label>
+    </li>
     </>
   )
 }
