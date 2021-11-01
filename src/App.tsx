@@ -32,8 +32,9 @@ function App() {
   return (
     <>
     <ul>
-      <TodoListItem todo={todos[0]} toggleTodo={toggleTodo} />
-      <TodoListItem todo={todos[1]} toggleTodo={toggleTodo} />
+      {todos.map(todo => (
+        <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} />
+      ))}
     </ul>
     </>
   );
