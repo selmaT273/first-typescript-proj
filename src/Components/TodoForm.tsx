@@ -2,7 +2,11 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-export const TodoForm: React.FC = () => {
+interface Props {
+  addTodo: AddTodo;
+}
+
+export const TodoForm: React.FC<Props> = ({ addTodo }) => {
   return (
     <>
     <h2>Add a todo item</h2>
