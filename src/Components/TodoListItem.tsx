@@ -1,11 +1,14 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import './TodoListItem.css';
 
 interface Props {
   todo: Todo;
   toggleTodo: ToggleTodo;
+  removeTodo: RemoveTodo;
 }
 
-export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo }) => {
+export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) => {
   return (
     <>
     <li>
@@ -16,8 +19,11 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo }) => {
           onClick={() => {
             toggleTodo(todo);
           }}
-        />{' '} 
+        />
+        {' '} 
         { todo.text }
+        {' '}
+        <Button type="submit" onClick={() => {removeTodo(todo)}}>Delete</Button>
       </label>
     </li>
     </>

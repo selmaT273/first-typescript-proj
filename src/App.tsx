@@ -26,10 +26,15 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
+  const removeTodo: RemoveTodo = (todoToRemove: Todo) => {
+    const remainingTodos = todos.filter(todo => todo !== todoToRemove);
+    setTodos(remainingTodos);
+  }
+
   return (
     <>
     <h1>Todo App</h1>
-    <TodoList todos={todos} toggleTodo={toggleTodo} />
+    <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/>
     <TodoForm addTodo={addTodo} />
     </>
   );
