@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { TodoListItem } from './Components/TodoListItem';
+import { TodoList } from './Components/TodoList';
 
 const initialTodos: Todo[] = [
   {
@@ -31,11 +31,7 @@ function App() {
   }
   return (
     <>
-    <ul>
-      {todos.map(todo => (
-        <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} />
-      ))}
-    </ul>
+    <TodoList todos={todos} toggleTodo={toggleTodo} />
     </>
   );
 }
