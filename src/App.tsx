@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { TodoListItem } from './Components/TodoListItem';
 
-const todos: Todo[] = [
+const initialTodos: Todo[] = [
   {
     text: 'do laundry',
     complete: false,
@@ -14,10 +14,27 @@ const todos: Todo[] = [
 ];
 
 function App() {
+  const [todos, setTodos] = useState(initialTodos);
+
+  // selectedTodo inherits from Todo interface
+  const toggleTodo = (selectedTodo: Todo) => {
+    const newTodos = todos.map(todo => {
+      if (todo === selectedTodo) {
+        return {
+          ...todo,
+          complete: !todo.complete,
+        };
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  }
   return (
     <>
-      <TodoListItem todo={todos[0]}/>
-      <TodoListItem todo={todos[1]}/>
+    <ul>
+      <TodoListItem todo={todos[0]} toggleTodo={toggleTodo} />
+      <TodoListItem todo={todos[1]} toggleTodo={toggleTodo} />
+    </ul>
     </>
   );
 }
