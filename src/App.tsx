@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
+import { Container, Row, Col } from 'react-bootstrap';
 import { TodoList } from './Components/TodoList';
 import { TodoForm } from './Components/TodoForm';
-
+import './App.css';
 
 function App() {
   const [todos, setTodos] = useState([] as Todo[]);
@@ -33,9 +33,21 @@ function App() {
 
   return (
     <>
-    <h1>Todo App</h1>
-    <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/>
-    <TodoForm addTodo={addTodo} />
+    <Container>
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <h1>Todo App</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <TodoForm addTodo={addTodo} />
+        </Col>
+        <Col>
+          <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/>
+        </Col>
+      </Row>
+    </Container>
     </>
   );
 }
