@@ -4,11 +4,11 @@ import './TodoListItem.css';
 
 interface Props {
   todo: ITodo;
-  // toggleTodo: ToggleTodo;
+  toggleTodo: ToggleTodo;
   // removeTodo: RemoveTodo;
 }
 
-export const TodoListItem: React.FC<Props> = ({ todo }) => {
+export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo }) => {
   return (
     <>
     <ListGroup.Item as="li" variant="light">
@@ -19,7 +19,7 @@ export const TodoListItem: React.FC<Props> = ({ todo }) => {
           type="checkbox" 
           checked={ todo.status }
           onClick={() => {
-            // toggleTodo(todo);
+            toggleTodo(todo);
           }}
         />
         </Col>

@@ -21,7 +21,7 @@ interface TodoProps {
 
 type ApiDataType = {
   message: string;
-  status: string;
+  status: boolean;
   todos: ITodo[];
   todo?: ITodo;
 }

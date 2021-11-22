@@ -34,3 +34,22 @@ export const addTodo = async (
     throw new Error(error)
   }
 }
+
+export const toggleTodo = async (
+  todo: ITodo
+): Promise<AxiosResponse<ApiDataType>> => {
+  try {
+    const todoUpdate: Pick<ITodo, 'status'> = {
+      status: !todo.status,
+    }
+
+    const updatedTodo: AxiosResponse<ApiDataType> = await axios.put(
+      `${baseUrl}/edit-todo/${todo._id}`,
+      todoUpdate
+    )
+    return updatedTodo
+  }
+  catch (error: any) {
+    throw new Error(error);
+  }
+}

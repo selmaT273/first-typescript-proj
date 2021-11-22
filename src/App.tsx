@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { TodoList } from './Components/TodoList';
 import { TodoForm } from './Components/TodoForm';
-import { getTodos, addTodo } from './API';
+import { getTodos, addTodo, toggleTodo } from './API';
 import './App.css';
 
 const App: React.FC = () => {
@@ -19,18 +19,16 @@ const App: React.FC = () => {
   }
 
   // selectedTodo inherits from Todo interface
-  const toggleTodo = (selectedTodo: ITodo) => {
-    const newTodos = todos.map(todo => {
-      if (todo === selectedTodo) {
-        return {
-          ...todo,
-          complete: !todo.status,
-        };
+  const handleToggleTodo = (selectedTodo: ITodo): void => {
+    toggleTodo(selectedTodo)
+    .then(({ status, data }) => {
+      if (status !== 200) {
+        throw new Error("Error! Was not updated");
       }
-      return todo;
-    });
-    setTodos(newTodos);
-  };
+      setTodos(data.todos);
+    })
+    .catch((err: any) => console.log(err))
+  }
 
   const handleAddTodo = (e: React.FormEvent, formData: ITodo): void => {
     e.preventDefault();
@@ -62,7 +60,7 @@ const App: React.FC = () => {
           <TodoForm addTodo={handleAddTodo} />
         </Col>
         <Col>
-          <TodoList todos={todos} />
+          <TodoList todos={todos} toggleTodo={handleToggleTodo} />
           {/* <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/> */}
         </Col>
       </Row>
