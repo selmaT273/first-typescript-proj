@@ -1,10 +1,10 @@
-interface Todo {
-  text: string;
-  complete: boolean;
-}
+// interface Todo {
+//   text: string;
+//   complete: boolean;
+// }
 
 interface ITodo {
-  _id: string;
+  _id?: string;
   name: string;
   description: string;
   status: boolean;
@@ -14,6 +14,9 @@ interface ITodo {
 
 interface TodoProps {
   todo: ITodo;
+  toggleTodo: ToggleTodo;
+  removeTodo: RemoveTodo;
+  addTodo: AddTodo;
 }
 
 type ApiDataType = {
@@ -23,8 +26,8 @@ type ApiDataType = {
   todo?: ITodo;
 }
 
-type ToggleTodo = (selectedTodo: Todo) => void;
+type ToggleTodo = (selectedTodo: ITodo) => void;
 
-type AddTodo = (text: string) => void;
+type AddTodo = (e: React.FormEvent, formData: ITodo | any) => void;
 
-type RemoveTodo = (todoToRemove: Todo) => void;
+type RemoveTodo = (todoToRemove: ITodo) => void;

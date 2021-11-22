@@ -13,3 +13,24 @@ export const getTodos = async (): Promise<AxiosResponse<ApiDataType>> => {
     throw new Error();
   }
 }
+
+export const addTodo = async (
+  formData: ITodo
+): Promise<AxiosResponse<ApiDataType>> => {
+  try {
+    const todo: Omit<ITodo, "_id"> = {
+      name: formData.name,
+      description: formData.description,
+      status: false,
+    }
+    const addTodo: AxiosResponse<ApiDataType> = await axios.post(
+      baseUrl + "/add-todo",
+      todo
+    )
+
+    return addTodo
+
+  } catch(error: any) {
+    throw new Error(error)
+  }
+}

@@ -7,17 +7,27 @@ interface Props {
 }
 
 export const TodoForm: React.FC<Props> = ({ addTodo }) => {
-  const [text, setText] = useState('');
+  const [formData, setFormData] = useState<ITodo | {}>();
+
+  const handleForm = (e: React.FormEvent<HTMLInputElement>): void => {
+    setFormData({
+      ...formData,
+      [e.currentTarget.id]: e.currentTarget.value,
+    })
+  }
+
   return (
     <>
     <h2>Add a todo item</h2>
     
-    <Form className="form border rounded p-3 bg-light">
+    <Form className="form border rounded p-3 bg-light" onSubmit={(e) => addTodo(e, formData)}>
       <Form.Group controlId="todoName">
         <Form.Label>Name</Form.Label>
         <Form.Control 
           type="text"
+          id="name"
           placeholder="Name of task"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleForm(e)}
         />
       </Form.Group>
 
@@ -25,16 +35,13 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
         <Form.Label className="todo-description-label">Description</Form.Label>
         <Form.Control 
           type="text"
-          value={text}
           placeholder="Enter description"
-          onChange={e => {setText(e.target.value)}}
+          id="description"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleForm(e)}
         />
       </Form.Group>
 
-      <Button className="mt-3" variant="primary" type="submit" onClick={e => {
-        e.preventDefault();
-        addTodo(text);
-        setText('')}}>
+      <Button className="mt-3" variant="primary" type="submit">
           Add 
       </Button>
     </Form>

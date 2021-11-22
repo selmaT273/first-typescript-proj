@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { TodoList } from './Components/TodoList';
 import { TodoForm } from './Components/TodoForm';
+import { getTodos, addTodo } from './API';
 import './App.css';
 
-function App() {
-  const [todos, setTodos] = useState([] as Todo[]);
+const App: React.FC = () => {
+  const [todos, setTodos] = useState<ITodo[]>([]);
+
+  useEffect(() => {
+    fetchTodos()
+  }, [])
+  
+  const fetchTodos = (): void => {
+    getTodos()
+    .then(({ data: { todos } }: ITodo[] | any) => setTodos(todos))
+    .catch((err: Error) => console.log(err))
+  }
 
   // selectedTodo inherits from Todo interface
-  const toggleTodo = (selectedTodo: Todo) => {
+  const toggleTodo = (selectedTodo: ITodo) => {
     const newTodos = todos.map(todo => {
       if (todo === selectedTodo) {
         return {
           ...todo,
-          complete: !todo.complete,
+          complete: !todo.status,
         };
       }
       return todo;
@@ -21,12 +32,19 @@ function App() {
     setTodos(newTodos);
   };
 
-  const addTodo: AddTodo = (text: string) => {
-    const newTodo = { text, complete: false };
-    setTodos([...todos, newTodo]);
+  const handleAddTodo = (e: React.FormEvent, formData: ITodo): void => {
+    e.preventDefault();
+    addTodo(formData)
+    .then(({ status, data }) => {
+      if (status !== 201) {
+        throw new Error("Error!! Was not saved")
+      }
+      setTodos(data.todos)
+    })
+    .catch((err: any) => console.log(err))
   };
 
-  const removeTodo: RemoveTodo = (todoToRemove: Todo) => {
+  const removeTodo: RemoveTodo = (todoToRemove: ITodo) => {
     const remainingTodos = todos.filter(todo => todo !== todoToRemove);
     setTodos(remainingTodos);
   }
@@ -41,10 +59,11 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <TodoForm addTodo={addTodo} />
+          <TodoForm addTodo={handleAddTodo} />
         </Col>
         <Col>
-          <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/>
+          <TodoList todos={todos} />
+          {/* <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/> */}
         </Col>
       </Row>
     </Container>

@@ -3,31 +3,33 @@ import { Button, ListGroup, Row, Col }from 'react-bootstrap';
 import './TodoListItem.css';
 
 interface Props {
-  todo: Todo;
-  toggleTodo: ToggleTodo;
-  removeTodo: RemoveTodo;
+  todo: ITodo;
+  // toggleTodo: ToggleTodo;
+  // removeTodo: RemoveTodo;
 }
 
-export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) => {
+export const TodoListItem: React.FC<Props> = ({ todo }) => {
   return (
     <>
     <ListGroup.Item as="li" variant="light">
-      <label style={{ textDecoration: todo.complete ? 'line-through' : undefined }}>
+      <label style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
       <Row>
       <Col className="col-2">
         <input 
           type="checkbox" 
-          checked={ todo.complete }
+          checked={ todo.status }
           onClick={() => {
-            toggleTodo(todo);
+            // toggleTodo(todo);
           }}
         />
         </Col>
         <Col>
-        { todo.text }
+        { todo.description }
         </Col>
         <Col>
-        <Button type="submit" variant="outline-danger" onClick={() => {removeTodo(todo)}}>Delete</Button>
+        <Button type="submit" variant="outline-danger" onClick={() => {
+          // removeTodo(todo)
+        }}>Delete</Button>
         </Col>
         </Row>
       </label>
