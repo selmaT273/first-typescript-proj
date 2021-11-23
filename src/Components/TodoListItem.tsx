@@ -5,10 +5,10 @@ import './TodoListItem.css';
 interface Props {
   todo: ITodo;
   toggleTodo: ToggleTodo;
-  // removeTodo: RemoveTodo;
+  removeTodo: RemoveTodo;
 }
 
-export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo }) => {
+export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) => {
   return (
     <>
     <ListGroup.Item as="li" variant="light">
@@ -28,7 +28,7 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo }) => {
         </Col>
         <Col>
         <Button type="submit" variant="outline-danger" onClick={() => {
-          // removeTodo(todo)
+          removeTodo(todo._id)
         }}>Delete</Button>
         </Col>
         </Row>

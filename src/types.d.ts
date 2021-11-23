@@ -4,7 +4,7 @@
 // }
 
 interface ITodo {
-  _id?: string;
+  _id: string;
   name: string;
   description: string;
   status: boolean;
@@ -30,4 +30,4 @@ type ToggleTodo = (selectedTodo: ITodo) => void;
 
 type AddTodo = (e: React.FormEvent, formData: ITodo | any) => void;
 
-type RemoveTodo = (todoToRemove: ITodo) => void;
+type RemoveTodo = (id: string) => void;

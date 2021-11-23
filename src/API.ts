@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { Axios, AxiosResponse } from 'axios';
 
 const baseUrl: string = 'http://localhost:3000';
 
@@ -50,6 +50,19 @@ export const toggleTodo = async (
     return updatedTodo
   }
   catch (error: any) {
+    throw new Error(error);
+  }
+}
+
+export const removeTodo = async (
+  _id: string
+): Promise<AxiosResponse<ApiDataType>> => {
+  try {
+    const deletedTodo: AxiosResponse<ApiDataType> = await axios.delete(
+      `${baseUrl}/delete-todo/${_id}`
+    )
+    return deletedTodo
+  } catch(error: any) {
     throw new Error(error);
   }
 }

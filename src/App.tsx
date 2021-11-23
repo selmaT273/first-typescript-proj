@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { TodoList } from './Components/TodoList';
 import { TodoForm } from './Components/TodoForm';
-import { getTodos, addTodo, toggleTodo } from './API';
+import { getTodos, addTodo, toggleTodo, removeTodo } from './API';
 import './App.css';
 
 const App: React.FC = () => {
@@ -42,9 +42,15 @@ const App: React.FC = () => {
     .catch((err: any) => console.log(err))
   };
 
-  const removeTodo: RemoveTodo = (todoToRemove: ITodo) => {
-    const remainingTodos = todos.filter(todo => todo !== todoToRemove);
-    setTodos(remainingTodos);
+  const handleRemoveTodo = (_id: string): void => {
+    removeTodo(_id)
+    .then(({ status, data}) => {
+      if (status !== 200) {
+        throw new Error("Error! Not deleted");
+      }
+      setTodos(data.todos)
+    })
+    .catch((err: any) => console.log(err))
   }
 
   return (
@@ -60,8 +66,7 @@ const App: React.FC = () => {
           <TodoForm addTodo={handleAddTodo} />
         </Col>
         <Col>
-          <TodoList todos={todos} toggleTodo={handleToggleTodo} />
-          {/* <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/> */}
+          <TodoList todos={todos} toggleTodo={handleToggleTodo} removeTodo={handleRemoveTodo}/>
         </Col>
       </Row>
     </Container>
