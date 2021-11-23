@@ -1,3 +1,14 @@
 li {
   list-style-type: none;
 }
+
+.card {
+  color: white;
+  font-weight: bold;
+  background-color: #EEBBCC;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}

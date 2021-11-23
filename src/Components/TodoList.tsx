@@ -12,7 +12,7 @@ interface Props {
 export const TodoList: React.FC<Props> = ({ todos, toggleTodo, removeTodo }) => {
   return (
     <>
-    <h2>List of todos</h2>
+    <h2>_</h2>
     <ListGroup as="ul">
     {todos.map((todo: ITodo) => (
       <TodoListItem key={todo._id} todo={todo} toggleTodo={toggleTodo} removeTodo={removeTodo}/>

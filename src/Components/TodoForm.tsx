@@ -18,12 +18,13 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
 
   return (
     <>
-    <h2>Add a todo item</h2>
+    <h2>_</h2>
     
-    <Form className="form border rounded p-3 bg-light" onSubmit={(e) => addTodo(e, formData)}>
+    <Form className="form rounded p-3" onSubmit={(e) => addTodo(e, formData)}>
       <Form.Group controlId="todoName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control 
+        <Form.Label className="todo-form-label">Name</Form.Label>
+        <Form.Control
+          className="mb-3" 
           type="text"
           id="name"
           placeholder="Name of task"
@@ -32,7 +33,7 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
       </Form.Group>
 
       <Form.Group controlId="todoDescription" className="mt-1">
-        <Form.Label className="todo-description-label">Description</Form.Label>
+        <Form.Label className="todo-form-label">Description</Form.Label>
         <Form.Control 
           type="text"
           placeholder="Enter description"

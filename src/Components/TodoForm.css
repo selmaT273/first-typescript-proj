@@ -1,3 +1,9 @@
 .form {
   width: 90%;
+  background-color: #C5AFDA;
+}
+
+.todo-form-label {
+  color: white;
+  font-weight: bold;
 }

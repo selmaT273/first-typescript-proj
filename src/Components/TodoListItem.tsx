@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ListGroup, Row, Col }from 'react-bootstrap';
+import { Button, ListGroup, Row, Col, Card }from 'react-bootstrap';
 import './TodoListItem.css';
 
 interface Props {
@@ -11,29 +11,23 @@ interface Props {
 export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) => {
   return (
     <>
-    <ListGroup.Item as="li" variant="light">
-      <label style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
-      <Row>
-      <Col className="col-2">
-        <input 
-          type="checkbox" 
-          checked={ todo.status }
-          onClick={() => {
-            toggleTodo(todo);
-          }}
-        />
-        </Col>
-        <Col>
-        { todo.description }
-        </Col>
-        <Col>
-        <Button type="submit" variant="outline-danger" onClick={() => {
-          removeTodo(todo._id)
-        }}>Delete</Button>
-        </Col>
-        </Row>
-      </label>
-    </ListGroup.Item>
+    <Card className="mb-2">
+      <Card.Body>
+      <input
+        type="checkbox" 
+        checked={ todo.status }
+        onClick={() => {
+          toggleTodo(todo);
+        }}
+      />
+      <p style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
+        { todo.name }
+      </p>
+      <Button type="submit" variant="outline-danger" onClick={() => {
+        removeTodo(todo._id)
+      }}>Delete</Button>
+      </Card.Body>
+    </Card>
     </>
   )
 }

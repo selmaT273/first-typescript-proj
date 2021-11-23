@@ -58,7 +58,7 @@ const App: React.FC = () => {
     <Container>
       <Row>
         <Col className="d-flex justify-content-center">
-          <h1>Todo App</h1>
+          <h1>My Todo List</h1>
         </Col>
       </Row>
       <Row>
