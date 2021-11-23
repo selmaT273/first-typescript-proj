@@ -26,7 +26,6 @@ export const addTodo = async (
       baseUrl + "/add-todo",
       todo
     )
-
     return addTodo
 
   } catch(error: any) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ListGroup, Row, Col, Card }from 'react-bootstrap';
+import { Button, Card }from 'react-bootstrap';
 import './TodoListItem.css';
 
 interface Props {

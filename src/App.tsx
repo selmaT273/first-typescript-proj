@@ -37,7 +37,9 @@ const App: React.FC = () => {
       if (status !== 201) {
         throw new Error("Error!! Was not saved")
       }
-      setTodos(data.todos)
+      setTodos(data.todos);
+
+      (e.target as HTMLFormElement).reset();
     })
     .catch((err: any) => console.log(err))
   };
