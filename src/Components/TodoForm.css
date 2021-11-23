@@ -7,3 +7,12 @@
   color: white;
   font-weight: bold;
 }
+
+.btn-custom {
+  background-color: #A585C1;
+  border-color: #A585C1;
+}
+
+.btn-custom:hover {
+  background-color: #a585c1cb;
+}

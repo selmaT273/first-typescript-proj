@@ -42,7 +42,7 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
         />
       </Form.Group>
 
-      <Button className="mt-3" variant="primary" type="submit">
+      <Button className="mt-3" variant="custom" type="submit">
           Add 
       </Button>
     </Form>

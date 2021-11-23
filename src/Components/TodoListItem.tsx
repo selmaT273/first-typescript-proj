@@ -23,7 +23,7 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
       <p style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
         { todo.name }
       </p>
-      <Button type="submit" variant="outline-danger" onClick={() => {
+      <Button className="btn-secondary" type="submit" onClick={() => {
         removeTodo(todo._id)
       }}>Delete</Button>
       </Card.Body>
