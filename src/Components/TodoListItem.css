@@ -2,18 +2,15 @@ li {
   list-style-type: none;
 }
 
-.card {
+.toast {
   color: white;
   font-weight: bold;
   background-color: #EEBBCC;
 }
 
-.card-body {
+.toast-header {
   display: flex;
   justify-content: space-between;
-}
-
-.delete-button {
-
+  background-color: #ffe0ea;
 }
 

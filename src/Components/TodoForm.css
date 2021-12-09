@@ -11,8 +11,11 @@
 .btn-custom {
   background-color: #A585C1;
   border-color: #A585C1;
+  color: white;
+  text-shadow: 0px 
 }
 
 .btn-custom:hover {
   background-color: #a585c1cb;
+  color: white;
 }
