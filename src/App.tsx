@@ -32,6 +32,7 @@ const App: React.FC = () => {
 
   const handleAddTodo = (e: React.FormEvent, formData: ITodo): void => {
     e.preventDefault();
+    console.log(formData.dueDate);
     addTodo(formData)
     .then(({ status, data }) => {
       if (status !== 201) {

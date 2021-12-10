@@ -15,10 +15,7 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
  
   return (
     <>
-    <OverlayTrigger
-      placement="top-end"
-      delay={{show: 250, hide: 400}}
-      overlay={<Tooltip>Created on: { formattedDate }</Tooltip>}>
+    
     <Toast className="mb-4" onClose={() => {removeTodo(todo._id)}}>
       <Toast.Header>
         <Button 
@@ -29,9 +26,14 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
           }}>
             {todo.status ? "Complete" : "Pending" }
         </Button>
+        <OverlayTrigger
+          placement="top"
+          delay={{show: 250, hide: 400}}
+          overlay={<Tooltip>Created on: { formattedDate }</Tooltip>}>
         <span style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
           { todo.name }
         </span>
+        </OverlayTrigger>
       </Toast.Header>
       <Toast.Body>
         <p style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
@@ -39,7 +41,6 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
         </p>
       </Toast.Body>
     </Toast>
-    </OverlayTrigger>
     </>
   )
 }

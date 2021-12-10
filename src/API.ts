@@ -21,6 +21,7 @@ export const addTodo = async (
       name: formData.name,
       description: formData.description,
       status: false,
+      dueDate: formData.dueDate,
     }
     const addTodo: AxiosResponse<ApiDataType> = await axios.post(
       baseUrl + "/add-todo",

@@ -22,12 +22,12 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
     
     <Form className="form rounded p-3" onSubmit={(e) => addTodo(e, formData)}>
       <Form.Group controlId="todoName">
-        <Form.Label className="todo-form-label">Name</Form.Label>
+        <Form.Label className="todo-form-label">Title</Form.Label>
         <Form.Control
           className="mb-3" 
           type="text"
           id="name"
-          placeholder="Name of task"
+          placeholder="Prank Dwight"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleForm(e)}
         />
       </Form.Group>
@@ -35,15 +35,26 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
       <Form.Group controlId="todoDescription" className="mt-1">
         <Form.Label className="todo-form-label">Description</Form.Label>
         <Form.Control 
+          className="mb-3"
           type="text"
-          placeholder="Enter description"
+          placeholder="Put his stapler in jello"
           id="description"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleForm(e)}
         />
       </Form.Group>
 
+      <Form.Group controlId="todoDueDate" className="mt-1">
+        <Form.Label className="todo-form-label">Due Date</Form.Label>
+        <Form.Control 
+          className="mb-3"
+          type="date"
+          id="dueDate"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleForm(e)} 
+        />
+      </Form.Group>
+
       <Button className="mt-3" variant="custom" type="submit">
-          Add 
+          Add to list
       </Button>
     </Form>
     </>
