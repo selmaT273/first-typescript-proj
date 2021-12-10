@@ -11,8 +11,10 @@ interface Props {
 export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) => {
 
   const dateCreated = todo.createdAt ? new Date(todo.createdAt) : null;
-  const formattedDate = dateCreated ? dateCreated.toLocaleDateString('en-us', {year: 'numeric', month: '2-digit', day:'2-digit'}) : null;
- 
+  const formattedDateCreated = dateCreated ? dateCreated.toLocaleDateString('en-us', {year: '2-digit', month: '2-digit', day:'2-digit'}) : null;
+  const dueDate = todo.dueDate ? new Date(todo.dueDate) : null;
+  const dueDateUTC = dueDate?.toUTCString();
+  const formattedDueDate = dueDateUTC ? dueDateUTC.split(' ').slice(0, 4).join(' ') : null;
   return (
     <>
     
@@ -29,16 +31,18 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
         <OverlayTrigger
           placement="top"
           delay={{show: 250, hide: 400}}
-          overlay={<Tooltip>Created on: { formattedDate }</Tooltip>}>
+          overlay={<Tooltip>Created on: { formattedDateCreated }</Tooltip>}>
         <span style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
           { todo.name }
         </span>
         </OverlayTrigger>
       </Toast.Header>
       <Toast.Body>
-        <p style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
+        {/* <p style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
           { todo.description }
-        </p>
+        </p> */}
+        <p>{todo.description}</p>
+        <p className="due-date">{formattedDueDate ? `Due: ${formattedDueDate}` : null}</p>
       </Toast.Body>
     </Toast>
     </>
