@@ -13,11 +13,13 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
   const dateCreated = todo.createdAt ? new Date(todo.createdAt) : null;
   const formattedDateCreated = dateCreated ? dateCreated.toLocaleDateString('en-us', {year: '2-digit', month: '2-digit', day:'2-digit'}) : null;
   const dueDate = todo.dueDate ? new Date(todo.dueDate) : null;
-  const dueDateUTC = dueDate?.toUTCString();
-  const formattedDueDate = dueDateUTC ? dueDateUTC.split(' ').slice(0, 4).join(' ') : null;
+  const dueDateString = dueDate?.toISOString();
+  const dueDateArr = dueDateString?.split('T');
+  const fullDate = dueDateArr ? dueDateArr[0] : null;
+  const dateArr = fullDate?.split('-');
+  const formattedDueDate = dateArr ? `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}` :  '';
   return (
     <>
-    
     <Toast className="mb-4" onClose={() => {removeTodo(todo._id)}}>
       <Toast.Header>
         <Button 
@@ -38,9 +40,6 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
         </OverlayTrigger>
       </Toast.Header>
       <Toast.Body>
-        {/* <p style={{ textDecoration: todo.status ? 'line-through' : undefined }}>
-          { todo.description }
-        </p> */}
         <p>{todo.description}</p>
         <p className="due-date">{formattedDueDate ? `Due: ${formattedDueDate}` : null}</p>
       </Toast.Body>
