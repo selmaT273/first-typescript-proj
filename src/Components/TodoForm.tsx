@@ -21,7 +21,7 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
     <h2>_</h2>
     
     <Form className="form rounded p-3" onSubmit={(e) => addTodo(e, formData)}>
-      <Form.Group controlId="todoName">
+      <Form.Group>
         <Form.Label className="todo-form-label">Title</Form.Label>
         <Form.Control
           className="mb-3" 
@@ -32,7 +32,7 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
         />
       </Form.Group>
 
-      <Form.Group controlId="todoDescription" className="mt-1">
+      <Form.Group className="mt-1">
         <Form.Label className="todo-form-label">Description</Form.Label>
         <Form.Control 
           className="mb-3"
@@ -43,7 +43,7 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
         />
       </Form.Group>
 
-      <Form.Group controlId="todoDueDate" className="mt-1">
+      <Form.Group className="mt-1">
         <Form.Label className="todo-form-label">Due Date</Form.Label>
         <Form.Control 
           className="mb-3"
