@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { TodoList } from './Components/TodoList';
 import { TodoForm } from './Components/TodoForm';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { getTodos, addTodo, toggleTodo, removeTodo } from './API';
 import './App.css';
 
@@ -13,6 +14,11 @@ const App: React.FC = () => {
   }, [])
   
   const fetchTodos = (): void => {
+    // where should this be set to state?
+    const currentDateTime = new Date();
+    const currentDateFormat = currentDateTime.toDateString();
+    console.log(currentDateFormat);
+
     getTodos()
     .then(({ data: { todos } }: ITodo[] | any) => setTodos(todos))
     .catch((err: Error) => console.log(err))
@@ -32,7 +38,6 @@ const App: React.FC = () => {
 
   const handleAddTodo = (e: React.FormEvent, formData: ITodo): void => {
     e.preventDefault();
-    console.log(formData.dueDate);
     addTodo(formData)
     .then(({ status, data }) => {
       if (status !== 201) {
@@ -58,21 +63,38 @@ const App: React.FC = () => {
 
   return (
     <>
-    <Container>
-      <Row>
-        <Col className="d-flex justify-content-center">
-          <h1>My Todo List</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <TodoForm addTodo={handleAddTodo} />
-        </Col>
-        <Col>
-          <TodoList todos={todos} toggleTodo={handleToggleTodo} removeTodo={handleRemoveTodo}/>
-        </Col>
-      </Row>
-    </Container>
+    <Parallax pages={2} style={{top: '0', left: '0'}}>
+      <ParallaxLayer
+        offset={0}
+        speed={2.5}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <Row>
+            <Col className="d-flex justify-content-center">
+              <h1>My Todo List</h1>
+            </Col>
+          </Row>
+      </ParallaxLayer>
+      <ParallaxLayer 
+        offset={1}
+        speed={2} 
+        style={{ backgroundColor: 'white' }} />
+      <ParallaxLayer offset={1} speed={0.5} style={{ backgroundColor: '#FFD5CC' }}>
+        <Container>
+          <Row>
+            <Col>
+              <TodoForm addTodo={handleAddTodo} />
+            </Col>
+            <Col>
+              <TodoList todos={todos} toggleTodo={handleToggleTodo} removeTodo={handleRemoveTodo}/>
+            </Col>
+          </Row>
+        </Container>
+      </ParallaxLayer>
+    </Parallax>
     </>
   );
 }

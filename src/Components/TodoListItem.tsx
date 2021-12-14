@@ -13,6 +13,7 @@ export const TodoListItem: React.FC<Props> = ({ todo, toggleTodo, removeTodo }) 
 
   const dateCreated = todo.createdAt ? new Date(todo.createdAt) : null;
   const formattedDateCreated = dateCreated ? dateCreated.toLocaleDateString('en-us', {year: '2-digit', month: '2-digit', day:'2-digit'}) : null;
+
   const dueDate = todo.dueDate ? new Date(todo.dueDate) : null;
   const dueDateString = dueDate?.toISOString();
   const dueDateArr = dueDateString?.split('T');
