@@ -75,7 +75,6 @@ const App: React.FC = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}
-        onClick={() => parallax.current.scrollTo(1)}
       >
           <Row>
             <Col className="d-flex justify-content-center">
