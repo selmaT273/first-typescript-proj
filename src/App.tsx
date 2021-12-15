@@ -69,7 +69,7 @@ const App: React.FC = () => {
     <Parallax ref={parallax} pages={2}>
       <ParallaxLayer
         offset={0}
-        speed={0}
+        speed={0.8}
         style={{
           display: 'flex',
           justifyContent: 'center',
@@ -83,14 +83,13 @@ const App: React.FC = () => {
           </Row>
       </ParallaxLayer>
 
-      <ParallaxLayer offset={0} speed={0.8} style={{ opacity: 0.2 }}>
+      <ParallaxLayer offset={0} speed={0.3} style={{ opacity: 0.2 }}>
         <img src={task} style={{ display: 'block', width: '20%', marginLeft: '55%' }} />
         <img src={task} style={{ display: 'block', width: '10%', marginLeft: '15%' }} />
       </ParallaxLayer>
 
       <ParallaxLayer offset={0.75} speed={0.5} style={{ opacity: 0.2 }}>
         <img src={task} style={{ display: 'block', width: '20%', marginLeft: '70%' }} />
-        {/* <img src={task} style={{ display: 'block', width: '20%', marginLeft: '40%' }} /> */}
       </ParallaxLayer>
 
       <ParallaxLayer offset={0} speed={0.2} style={{ opacity: 0.1 }}>
@@ -99,26 +98,14 @@ const App: React.FC = () => {
       </ParallaxLayer>
 
       <ParallaxLayer offset={0.6} speed={-0.1} style={{ opacity: 0.2 }}>
-        {/* <img src={task} style={{ display: 'block', width: '20%', marginLeft: '60%' }} /> */}
         <img src={task} style={{ display: 'block', width: '25%', marginLeft: '30%' }} />
-        {/* <img src={task} style={{ display: 'block', width: '10%', marginLeft: '80%' }} /> */}
       </ParallaxLayer>
 
       <ParallaxLayer offset={1.6} speed={0.3} style={{ opacity: 0.1 }}>
         <img src={task} style={{ display: 'block', width: '20%', marginLeft: '5%' }} />
         <img src={task} style={{ display: 'block', width: '15%', marginLeft: '75%' }} />
       </ParallaxLayer>
-
-      <ParallaxLayer offset={1} speed={0.4} style={{ opacity: 0.2 }}>
-        {/* <img src={task} style={{ display: 'block', width: '20%', marginLeft: '55%' }} /> */}
-        {/* <img src={task} style={{ display: 'block', width: '10%', marginLeft: '15%' }} /> */}
-      </ParallaxLayer>
-
-      <ParallaxLayer offset={1.75} speed={0.5} style={{ opacity: 0.1 }}>
-        {/* <img src={task} style={{ display: 'block', width: '20%', marginLeft: '70%' }} /> */}
-        {/* <img src={task} style={{ display: 'block', width: '20%', marginLeft: '40%' }} /> */}
-      </ParallaxLayer>
-
+      
       <ParallaxLayer offset={1} speed={0.2} style={{ opacity: 0.2 }}>
         <img src={task} style={{ display: 'block', width: '10%', marginLeft: '10%' }} />
         <img src={task} style={{ display: 'block', width: '20%', marginLeft: '75%' }} />
@@ -130,15 +117,9 @@ const App: React.FC = () => {
         <img src={task} style={{ display: 'block', width: '10%', marginLeft: '80%' }} />
       </ParallaxLayer>
 
-      <ParallaxLayer offset={2.6} speed={0.4} style={{ opacity: 0.2 }}>
-        <img src={task} style={{ display: 'block', width: '20%', marginLeft: '5%' }} />
-        <img src={task} style={{ display: 'block', width: '15%', marginLeft: '75%' }} />
-      </ParallaxLayer>
       <ParallaxLayer 
-        offset={1} 
-        speed={0.5} 
-        // style={{ backgroundColor: '#FFD5CC' }}
-      //  onClick={}
+        offset={1.1} 
+        speed={0.8} 
       >
         <Container>
           <Row>
