@@ -19,8 +19,7 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
   return (
     <>
     <h2>_</h2>
-    
-    <Form className="form rounded p-3" onSubmit={(e) => addTodo(e, formData)}>
+    <Form className="form rounded p-3 shadow" onSubmit={(e) => addTodo(e, formData)}>
       <Form.Group>
         <Form.Label className="todo-form-label">Title</Form.Label>
         <Form.Control

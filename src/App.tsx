@@ -78,7 +78,7 @@ const App: React.FC = () => {
       >
           <Row>
             <Col className="d-flex justify-content-center">
-              <h1>My Todo List</h1>
+              <h1 className="shadow rounded">- To Do List</h1>
             </Col>
           </Row>
       </ParallaxLayer>
